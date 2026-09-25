@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "askv"
+version = "0.1.0"
+description = "Governed multi-agent pipeline for cinematic generation"
+requires-python = ">=3.10"
+dependencies = [
+  "pydantic>=2.7,<3",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8,<9",
+]
+vision = [
+  "Pillow>=10,<12",
+]
+llm = [
+  "ollama>=0.4,<1",
+]
+orchestration = [
+  "crewai>=0.80,<2",
+]
+
+[project.scripts]
+askv = "askv.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
